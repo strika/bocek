@@ -20,6 +20,7 @@
 - [ ] Uklonjene kante za smeće sa ulaza BM.
 - [ ] Upisana imena prisutnih posmatrača u Zapisnik o posmatračima.
 - [ ] Provera da li ima najavljenih medija sa predsednikom BO.
+- [ ] Javiti broj upisanih u birački spisak i broj prijavljenih za glasanje van BM.
 
 ## 7:00 - Otvaranje
 
@@ -36,6 +37,10 @@
 ## 10:00
 
 - [ ] Javiti izlaznost.
+
+## 11:00
+
+- [ ] Javiti konačan broj prijavljenih za glasanje van BM kada GIK pošalje konačnu. GIK može poslati konačnu listu i par sati kasnije.
 
 ## 12:00
 
@@ -59,8 +64,10 @@
 
 ## 20:00 - Zatvaranje
 
+- [ ] Član BO stao na kraj reda.
 - [ ] Javiti izlaznost.
 - [ ] Svi članovi ili njihovi zamenici prisustvuju brojanju.
+- [ ] Jedan član BO pazi na materijal, džak i zapisnik.
 
 ### Pre otvaranja kutije
 
