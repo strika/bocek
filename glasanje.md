@@ -80,6 +80,7 @@
 ### Brojanje
 
 - [ ] Kontrolni list je u kutiji.
+- [ ] Kontrolni list se čuva na bezbednom mestu.
 - [ ] Javiti prve rezultate.
 - [ ] Broj važećih listića upisan u kontrolni formular.
 - [ ] Broj nevažećih listića upisan u kontrolni formular.
