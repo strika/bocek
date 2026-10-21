@@ -11,12 +11,12 @@ Checklists for members of a polling station committee (*birački odbor*) in Serb
 `build.sh` converts checklists to PDF with pandoc + XeLaTeX (font: DejaVu Sans).
 
 ```sh
-./build.sh                    # every checklist, A4 and B5 (the committed formats)
-./build.sh -p a5,letter       # other paper formats (a4, a5, b5, letter)
+./build.sh                    # every checklist in all committed formats: a4, b5, a5, a5-2up
+./build.sh -p letter          # a format that is not built by default
 ./build.sh -p b5 glasanje.md  # a single file
 ```
 
-Output goes to `pdf/<format>/<name>.pdf`. The PDFs are committed: rebuild them in the same commit as any checklist change. Builds are reproducible (fixed timestamps and trailer ID), so unchanged checklists produce no git diff; keep it that way when changing the build. With no files given, every `*.md` in the root except `README.md` and `CLAUDE.md` is converted, so new checklists are picked up automatically. To add a paper format, extend `paper_for` in `build.sh` with a LaTeX `geometry` paper name.
+Output goes to `pdf/<format>/<name>.pdf`. The PDFs are committed: rebuild them in the same commit as any checklist change. Builds are reproducible (fixed timestamps and trailer ID), so unchanged checklists produce no git diff; keep it that way when changing the build. With no files given, every `*.md` in the root except `README.md` and `CLAUDE.md` is converted, so new checklists are picked up automatically. `a5-2up` is not a paper size: it renders the A5 version and then puts two A5 pages side by side on each A4 landscape sheet (via `pdfpages`), so the sheet can be printed on A4 and cut in half. To add a paper format, extend `paper_for` in `build.sh` with a LaTeX `geometry` paper name.
 
 ## Content conventions
 
