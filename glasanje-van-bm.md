@@ -7,6 +7,7 @@
 
 ## Pre odlaska na teren
 
+- [ ] Javiti koordinatoru ukupan broj prijavljenih za glasanje van BM.
 - [ ] Prijaviti se za odlazak na glasanje van BM predsedniku BO.
 - [ ] Za svakog birača koji se javio za glasanje van BM:
   - Proveriti da li je upisan u izvod iz biračkog spiska.
@@ -15,7 +16,7 @@
 - [ ] Dati potvrde predsedniku BO da ih potpiše.
 - [ ] Spakovati koverte za svakog birača:
   - Potvrdu, glasački listić i malu kovertu spakovati u veliku kovertu.
-  - Na kovertu napisati podatke o biraču.
+  - Na kovertu napisati adresu birača.
 - [ ] Sortirati koverte po redosledu obilaska birača.
 - [ ] Spakovati zbirnu izbornu listu.
 - [ ] Spakovati UV lampu i sprej.

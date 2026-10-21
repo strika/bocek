@@ -42,8 +42,10 @@
     (0,0) rectangle (0.72em,0.72em);}
 \AtBeginDocument{\renewcommand{\square}{\mbox{\checkbox}}}
 
-% Uniform tight lists. Pandoc's gfm reader treats a list followed by a
-% trailing blank line at EOF as loose, so spacing must not depend on that.
+% Uniform list spacing. Pandoc's gfm reader treats a list followed by a
+% trailing blank line at EOF as loose, and marks the others with \tightlist
+% (which zeroes itemsep); neutralise \tightlist so all lists look the same.
+\AtBeginDocument{\renewcommand{\tightlist}{}}
 \setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt}
 \setlist[itemize,1]{leftmargin=1.7em, labelsep=0.65em}
 \setlist[itemize,2]{label={\color{muted}\textendash}, leftmargin=1.1em,
