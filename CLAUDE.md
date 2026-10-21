@@ -4,7 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Checklists for members of a polling station committee (*birački odbor*) in Serbia. Content only: there is no code, build, lint or test tooling. Each checklist is a standalone Markdown file at the repo root (e.g. `glasanje.md`, the checklist for election day).
+Checklists for members of a polling station committee (*birački odbor*) in Serbia. Each checklist is a standalone Markdown file at the repo root (e.g. `glasanje.md`, the checklist for election day).
+
+## Building PDFs
+
+`build.sh` converts checklists to PDF with pandoc + XeLaTeX (font: DejaVu Sans).
+
+```sh
+./build.sh                    # every checklist, A4
+./build.sh -p a4,b5           # several paper formats (a4, a5, b5, letter)
+./build.sh -p b5 glasanje.md  # a single file
+```
+
+Output goes to `pdf/<format>/<name>.pdf`. The PDFs are committed: rebuild them in the same commit as any checklist change. Builds are reproducible (fixed timestamps and trailer ID), so unchanged checklists produce no git diff; keep it that way when changing the build. With no files given, every `*.md` in the root except `README.md` and `CLAUDE.md` is converted, so new checklists are picked up automatically. To add a paper format, extend `paper_for` in `build.sh` with a LaTeX `geometry` paper name.
 
 ## Content conventions
 
