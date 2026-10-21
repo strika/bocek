@@ -1,0 +1,64 @@
+% Visual style for checklist PDFs, included into pandoc's LaTeX preamble by
+% build.sh. Heading levels: # title -> \section, ## time slot -> \subsection,
+% ### phase -> \subsubsection.
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{accent}{HTML}{1E3A5F}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{hairline}{HTML}{D1D5DB}
+
+\newfontfamily\blackfont{Lato Black}
+\newfontfamily\semiboldfont{Lato Semibold}
+
+% Title: heavy, with a short accent bar underneath. Set in an \hbox, so a
+% title must fit on one line (it will not wrap, even on A5).
+\titleformat{\section}[block]
+  {\blackfont\fontsize{20}{24}\selectfont\color{ink}}{}{0pt}
+  {\vtop{\hbox{#1}\nointerlineskip\kern7pt\hbox{\color{accent}\rule{2.5em}{2.5pt}}}}
+\titlespacing*{\section}{0pt}{0pt}{1.2em}
+
+% Time slot: accent text followed by a hairline to the right margin.
+\titleformat{\subsection}[hang]
+  {\semiboldfont\large\color{accent}}{}{0pt}
+  {#1\hspace{0.6em}{\color{hairline}\leaders\hrule height 0.55ex depth -0.5ex\hfill\kern0pt}}
+\titlespacing*{\subsection}{0pt}{1.3em}{0.5em}
+
+% Phase within a time slot: small letterspaced capitals.
+\titleformat{\subsubsection}[hang]
+  {\semiboldfont\small\color{muted}}{}{0pt}
+  {\addfontfeatures{LetterSpace=8}\MakeUppercase{#1}}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.35em}
+
+% Pandoc renders "- [ ]" as \item[$\square$]; draw a proper checkbox instead.
+\newcommand{\checkbox}{%
+  \tikz[baseline=0pt]\draw[muted, line width=0.6pt, rounded corners=1.2pt]
+    (0,0) rectangle (0.72em,0.72em);}
+\AtBeginDocument{\renewcommand{\square}{\mbox{\checkbox}}}
+
+% Uniform tight lists. Pandoc's gfm reader treats a list followed by a
+% trailing blank line at EOF as loose, so spacing must not depend on that.
+\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt}
+\setlist[itemize,1]{leftmargin=1.7em, labelsep=0.65em}
+\setlist[itemize,2]{label={\color{muted}\textendash}, leftmargin=1.1em,
+  labelsep=0.5em, itemsep=1pt, topsep=1pt}
+
+% Footer: page number only.
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\footnotesize\color{muted}\thepage\,/\,\pageref*{LastPage}}
+
+\AtBeginDocument{%
+  \color{ink}%
+  \raggedright%
+  \hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}%
+  % Pandoc's template loads xurl, which breaks URLs after any letter; restore
+  % url.sty's breaks (after . / - etc.) so addresses stay readable on paper.
+  \useOriginalUrlSetting}

@@ -8,7 +8,7 @@ Checklists for members of a polling station committee (*birački odbor*) in Serb
 
 ## Building PDFs
 
-`build.sh` converts checklists to PDF with pandoc + XeLaTeX (font: DejaVu Sans).
+`build.sh` converts checklists to PDF with pandoc + XeLaTeX. All visual styling (Lato font, colours, heading styles, checkbox drawing, list spacing, footer) is in `style.tex`, included into the pandoc preamble; `build.sh` only sets paper size, margins and font size. Lato must be installed as a system font.
 
 ```sh
 ./build.sh                    # every checklist in all committed formats: a4, b5, a5, a5-2up
