@@ -67,9 +67,12 @@ trailer_id() {
 render() {
   # Force tight spacing on every list: pandoc's gfm reader treats a list
   # followed by a trailing blank line at EOF as loose (extra item spacing).
+  # Pandoc's template loads xurl, which breaks URLs after any letter; restore
+  # url.sty's breaks (after . / - etc.) so addresses stay readable on paper.
   pandoc "$1" \
     -V header-includes="$(trailer_id "$1" "$2")" \
     -V header-includes="\\usepackage{enumitem}\\setlist[itemize]{itemsep=0pt,parsep=0pt}" \
+    -V header-includes="\\AtBeginDocument{\\useOriginalUrlSetting}" \
     --from gfm \
     --pdf-engine xelatex \
     -V geometry:"$(paper_for "$2")" \
