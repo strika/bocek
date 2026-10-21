@@ -11,8 +11,8 @@ Checklists for members of a polling station committee (*birački odbor*) in Serb
 `build.sh` converts checklists to PDF with pandoc + XeLaTeX (font: DejaVu Sans).
 
 ```sh
-./build.sh                    # every checklist, A4
-./build.sh -p a4,b5           # several paper formats (a4, a5, b5, letter)
+./build.sh                    # every checklist, A4 and B5 (the committed formats)
+./build.sh -p a5,letter       # other paper formats (a4, a5, b5, letter)
 ./build.sh -p b5 glasanje.md  # a single file
 ```
 

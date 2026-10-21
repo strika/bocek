@@ -2,7 +2,7 @@
 # Convert checklist Markdown files to PDF via pandoc + XeLaTeX.
 #
 # Usage: ./build.sh [-p FORMATS] [-o DIR] [FILE.md ...]
-#   -p FORMATS  comma-separated paper formats (default: a4)
+#   -p FORMATS  comma-separated paper formats (default: a4,b5)
 #               supported: a4, a5, b5, letter
 #   -o DIR      output directory (default: pdf)
 #   FILE.md     files to convert (default: every *.md in the repo root
@@ -14,7 +14,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-formats="a4"
+formats="a4,b5"
 outdir="pdf"
 
 usage() { sed -n '2,12s/^# \{0,1\}//p' "$0"; exit "${1:-0}"; }
