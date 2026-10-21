@@ -40,7 +40,7 @@
 
 ## 11:00
 
-- [ ] Javiti konačan broj prijavljenih za glasanje van BM kada GIK pošalje konačnu. GIK može poslati konačnu listu i par sati kasnije.
+- [ ] Javiti konačan broj prijavljenih za glasanje van BM kada GIK pošalje konačnu listu. GIK može poslati konačnu listu i par sati kasnije.
 
 ## 12:00
 
