@@ -18,6 +18,8 @@ Checklists for members of a polling station committee (*birački odbor*) in Serb
 
 Output goes to `pdf/<format>/<name>.pdf`. The PDFs are committed: rebuild them in the same commit as any checklist change. Builds are reproducible (fixed timestamps and trailer ID), so unchanged checklists produce no git diff; keep it that way when changing the build. With no files given, every `*.md` in the root except `README.md` and `CLAUDE.md` is converted, so new checklists are picked up automatically. `a5-2up` is not a paper size: it renders the A5 version and then puts two A5 pages side by side on each A4 landscape sheet (via `pdfpages`), so the sheet can be printed on A4 and cut in half. To add a paper format, extend `paper_for` in `build.sh` with a LaTeX `geometry` paper name.
 
+Standalone sheets that are not checklists (e.g. `brojanje.tex`, numbers 1–1000 to cross out while counting) are plain LaTeX files in the root that set their own paper and styling. With no files given, `build.sh` also builds every `*.tex` except `style.tex`, on A4 only, to `pdf/a4/<name>.pdf`.
+
 ## Content conventions
 
 - Write in Serbian, Latin script, with full diacritics (č, ć, š, ž, đ).

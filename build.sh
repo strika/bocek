@@ -10,6 +10,9 @@
 #               except README.md and CLAUDE.md)
 #
 # Output: DIR/<format>/<name>.pdf
+#
+# With no files given, standalone LaTeX sheets (every *.tex in the repo root
+# except style.tex) are also built, on A4 only, to DIR/a4/<name>.pdf.
 
 set -euo pipefail
 
@@ -18,7 +21,7 @@ cd "$(dirname "$0")"
 formats="a4,b5,a5,a5-2up"
 outdir="pdf"
 
-usage() { sed -n '2,13s/^# \{0,1\}//p' "$0"; exit "${1:-0}"; }
+usage() { sed -n '2,16s/^# \{0,1\}//p' "$0"; exit "${1:-0}"; }
 
 while getopts "p:o:h" opt; do
   case $opt in
@@ -30,7 +33,11 @@ while getopts "p:o:h" opt; do
 done
 shift $((OPTIND - 1))
 
+sheets=()
 if [ $# -eq 0 ]; then
+  for f in *.tex; do
+    [ "$f" = style.tex ] || sheets+=("$f")
+  done
   files=()
   for f in *.md; do
     case $f in README.md | CLAUDE.md) continue ;; esac
@@ -110,4 +117,16 @@ for format in "${format_list[@]}"; do
     fi
     echo "$out"
   done
+done
+
+# Standalone sheets set their own paper and styling.
+for src in "${sheets[@]}"; do
+  out="$outdir/a4/$(basename "${src%.tex}").pdf"
+  mkdir -p "$outdir/a4"
+  id=$(trailer_id "$src" a4)
+  cp "$src" "$tmp/sheet.tex"
+  (cd "$tmp" && xelatex -interaction=batchmode \
+    "\\AddToHook{begindocument}{$id}\\input{sheet.tex}" > /dev/null)
+  mv "$tmp/sheet.pdf" "$out"
+  echo "$out"
 done
