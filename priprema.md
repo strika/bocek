@@ -34,6 +34,7 @@
 - [ ] Maramice.
 - [ ] Baterijsku lampu.
 - [ ] AAA baterije za UV lampu.
+- [ ] Sredstvo za dezinfekciju ruku.
 
 ## Ostalo
 
